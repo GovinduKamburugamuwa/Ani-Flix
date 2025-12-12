@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #030014;
+
+  --color-light-100: #cecefb;
+  --color-light-200: #a8b5db;
+
+  --color-gray-100: #9ca4ab;
+
+  --color-dark-100: #0f0d23;
+
+  --font-dm-sans: DM Sans, sans-serif;
+
+  --breakpoint-xs: 480px;
+
+  --background-image-hero-pattern: url("/hero-bg.png");
+}
+
+@layer base {
+  body {
+    font-family: "DM Sans", serif;
+    font-optical-sizing: auto;
+    background: #030014;
+  }
+
+  h1 {
+    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+  }
+
+  h2 {
+    @apply text-2xl font-bold text-white sm:text-3xl;
+  }
+
+  main {
+    @apply min-h-screen relative bg-primary;
+  }
+
+  header {
+    @apply sm:mt-10 mt-5;
+  }
+
+  header img {
+    @apply w-full max-w-lg h-auto object-contain mx-auto drop-shadow-md;
+  }
+}
+
+@layer components {
+  .pattern {
+    @apply bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0;
+  }
+
+  .movie-backdrop {
+    @apply absolute top-0 left-0 w-full h-[120vh] bg-center bg-cover z-0;
+
+    &::before {
+      content: "";
+      @apply absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/80 to-primary z-10;
+    }
+
+    &::after {
+      content: "";
+      @apply absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent z-10;
+    }
+  }
+
+  .wrapper {
+    @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+  }
+
+  .trending {
+    @apply mt-20;
+
+    & ul {
+      @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+    }
+
+    & ul li {
+      @apply min-w-[230px] flex flex-row items-center;
+    }
+
+    & ul li p {
+      @apply fancy-text mt-[22px] text-nowrap;
+    }
+
+    & ul li img {
+      @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+    }
+  }
+
+  .search {
+    @apply w-full bg-light-100/5 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+
+    & div {
+      @apply relative flex items-center;
+    }
+
+    & img {
+      @apply absolute left-2 h-5 w-5;
+    }
+
+    & input {
+      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden;
+    }
+  }
+
+  .all-movies {
+    @apply space-y-9;
+
+    & ul {
+      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+    }
+  }
+
+  .movie-card {
+    @apply bg-dark-100 rounded-2xl shadow-lg shadow-light-100/5 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-light-100/20 hover:-translate-y-2 cursor-pointer;
+  }
+
+  .movie-card-image {
+    @apply relative overflow-hidden aspect-[2/3];
+
+    & img {
+      @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-110;
+    }
+  }
+
+  .movie-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4;
+  }
+
+  .rating-badge {
+    @apply flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10;
+
+    & img {
+      @apply size-4 object-contain;
+    }
+
+    & span {
+      @apply text-white font-bold text-sm;
+    }
+  }
+
+  .movie-card-content {
+    @apply p-4 space-y-2;
+
+    & h3 {
+      @apply text-white font-bold text-lg line-clamp-2 leading-snug group-hover:text-gradient transition-all duration-300;
+    }
+  }
+
+  .movie-card-meta {
+    @apply flex items-center gap-2 text-sm;
+
+    & .lang {
+      @apply text-light-200 font-semibold;
+    }
+
+    & .separator {
+      @apply text-gray-100;
+    }
+
+    & .year {
+      @apply text-gray-100 font-medium;
+    }
+  }
+
+  .movie-details {
+    @apply space-y-12 relative z-20;
+  }
+
+  .movie-details-header {
+    @apply flex flex-col md:flex-row gap-8;
+  }
+
+  .movie-details-poster {
+    @apply w-full md:w-[400px] rounded-2xl shadow-2xl shadow-light-100/20;
+  }
+
+  .movie-details-info {
+    @apply flex-1;
+  }
+
+  .genre-tag {
+    @apply px-4 py-2 bg-light-100/10 text-light-200 rounded-full text-sm font-medium;
+  }
+
+  .movie-trailer {
+    @apply mt-12;
+  }
+
+  .trailer-container {
+    @apply relative w-full aspect-video bg-dark-100 rounded-2xl overflow-hidden;
+  }
+
+  .action-button {
+    @apply p-3 bg-light-100/10 text-white rounded-full hover:bg-light-100/20 transition-all duration-300 hover:scale-110;
+  }
+
+  .movie-section {
+    @apply mt-12;
+  }
+
+  .cast-grid {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4;
+  }
+
+  .cast-card {
+    @apply space-y-2;
+
+    & img {
+      @apply w-full aspect-[2/3] object-cover rounded-lg;
+    }
+
+    & h4 {
+      @apply text-white font-semibold text-sm line-clamp-1;
+    }
+
+    & p {
+      @apply text-gray-100 text-xs line-clamp-2;
+    }
+  }
+
+  .similar-grid {
+    @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-4;
+  }
+
+  .filter-sort {
+    @apply flex flex-wrap gap-4 mb-8 p-4 bg-dark-100 rounded-lg;
+  }
+
+  .filter-group {
+    @apply flex flex-col gap-2;
+
+    & label {
+      @apply text-sm text-gray-100 font-medium;
+    }
+
+    & select {
+      @apply bg-light-100/5 text-white px-4 py-2 rounded-lg border border-light-100/10 focus:outline-none focus:border-light-100/30 transition-colors;
+    }
+  }
+
+  .favorites-toggle {
+    @apply flex items-center gap-2 px-4 py-2 bg-light-100/10 text-white rounded-lg hover:bg-light-100/20 transition-all;
+  }
+
+  .scroll-to-top {
+    @apply fixed bottom-8 right-8 p-4 bg-gradient-to-r from-[#D6C7FF] to-[#AB8BFF] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300 z-50;
+  }
+}
+
+@utility text-gradient {
+  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+}
+
+@utility fancy-text {
+  -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
+  font-size: 190px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+@utility hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
