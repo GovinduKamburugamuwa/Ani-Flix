@@ -7,7 +7,7 @@ import MovieDetails from './pages/MovieDetails.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Ani-Flix" >
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
