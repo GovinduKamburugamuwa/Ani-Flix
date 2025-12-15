@@ -67,6 +67,31 @@
     }
   }
 
+  .video-backdrop {
+    @apply overflow-hidden;
+
+    & .backdrop-video {
+      @apply absolute pointer-events-none border-0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.5);
+      width: 100vw;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+    
+    & .backdrop-video.loaded {
+      opacity: 1;
+    }
+
+    & .backdrop-overlay {
+      @apply absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/25 to-primary z-10;
+    }
+  }
+
   .wrapper {
     @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
   }
