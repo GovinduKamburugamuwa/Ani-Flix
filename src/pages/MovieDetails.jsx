@@ -275,6 +275,22 @@ const MovieDetails = () => {
             </div>
           )}
 
+          {/* Trailer Section */}
+          {trailer && (
+            <div className="movie-trailer">
+              <h2 className="text-3xl font-bold text-white mb-6">Trailer</h2>
+              <div className="trailer-container">
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailer.key}`}
+                  title="Movie Trailer"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full rounded-lg"
+                />
+              </div>
+            </div>
+          )}
+
           {/* Similar Movies Section */}
           {similarMovies.length > 0 && (
             <div className="movie-section">
