@@ -14,11 +14,11 @@ const database = new Databases(client);
 
 export const updateSearchCount = async (searchTerm, movie) => {
   try {
-    const result = await database.listDocuments({
-      databaseId: DATABASE_ID,
-      collectionId: COLLECTION_ID,
-      queries: [Query.equal('searchTerm', searchTerm)]
-    })
+    const result = await database.listDocuments(
+      DATABASE_ID,
+      COLLECTION_ID,
+      [Query.equal('searchTerm', searchTerm)]
+    )
 
     // 2. If it does, update the count
     if(result.documents.length > 0) {
@@ -43,14 +43,14 @@ export const updateSearchCount = async (searchTerm, movie) => {
 
 export const getTrendingMovies = async () => {
   try {
-    const result = await database.listDocuments({
-      databaseId: DATABASE_ID,
-      collectionId: COLLECTION_ID,
-      queries: [
+    const result = await database.listDocuments(
+      DATABASE_ID,
+      COLLECTION_ID,
+      [
         Query.limit(5),
         Query.orderDesc("count")
       ]
-    })
+    )
 
     return result.documents;
    } catch (error) {

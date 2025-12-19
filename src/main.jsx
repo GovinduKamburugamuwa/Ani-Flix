@@ -5,9 +5,11 @@ import './index.css'
 import App from './App.jsx'
 import MovieDetails from './pages/MovieDetails.jsx'
 
+const basename = import.meta.env.PROD ? '/Ani-Flix' : '/';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/Ani-Flix" >
+    <BrowserRouter basename={basename} >
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/movie/:id" element={<MovieDetails />} />

@@ -20,7 +20,7 @@ const MovieCard = ({ movie:
         />
         <div className="movie-card-overlay">
           <div className="rating-badge">
-            <img src="star.svg" alt="Star Icon" />
+            <img src="/star.svg" alt="Star Icon" />
             <span>{vote_average ? vote_average.toFixed(1) : 'N/A'}</span>
           </div>
         </div>
