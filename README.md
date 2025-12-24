@@ -1,5 +1,9 @@
 # React + Vite
 
+## 🌐 Live Demo
+
+**🎯 [Ani-Flix - Live Application](https://govindukamburugamuwa.github.io/Ani-Flix/)**
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
